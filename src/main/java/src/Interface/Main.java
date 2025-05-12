@@ -22,6 +22,7 @@ public class Main extends PApplet {
     PImage rr;
     String debuga = "x: " + mouseX + " y: " + mouseY;
 
+
     public static void main(String[] args) {
         PApplet.main("src.Interface.Main");
     }
@@ -63,21 +64,61 @@ public class Main extends PApplet {
         flTxt.display();
         rrTxt.display();
         rlTxt.display();
-        gerenciadorImagem();
+        if(!mouseOver()) gerenciadorImagens(indexCaixa);
 
     }
 
-    void gerenciadorImagem(){
+    boolean mouseOver(){
+        boolean estaSobCaixa = true;
+        int indexCaixa = this.indexCaixa;
         if(frTxt.isMouseOver()){
-            imgCentral = fr;
+            indexCaixa = 1;
         }else if(flTxt.isMouseOver()){
-            imgCentral = fl;
+            indexCaixa = 2;
         }else if(rlTxt.isMouseOver()){
-            imgCentral = rl;
+            indexCaixa = 3;
+        }else if(rrTxt.isMouseOver()) {
+            indexCaixa = 4;
+        }else{
+            indexCaixa = 0;
+            estaSobCaixa = false;
+        }
+        gerenciadorImagens(indexCaixa);
+        return estaSobCaixa;
+    }
+
+    void gerenciadorImagens(int indexCaixa){
+        switch (indexCaixa){
+            case 1:
+                imgCentral = fr;
+                break;
+            case 2:
+                imgCentral = fl;
+                break;
+            case 3:
+                imgCentral = rl;
+                break;
+            case 4:
+                imgCentral = rr;
+                break;
+            default:
+                imgCentral = defaultImage;
+        }
+    }
+
+
+    @Override
+    public void mouseClicked() {
+        if(frTxt.isMouseOver()){
+            indexCaixa = 1;
+        }else if(flTxt.isMouseOver()){
+            indexCaixa = 2;
+        }else if(rlTxt.isMouseOver()){
+            indexCaixa = 3;
         }else if(rrTxt.isMouseOver()){
-            imgCentral = rr;
-        }else {
-            imgCentral = defaultImage;
+            indexCaixa = 4;
+        }else{
+            indexCaixa = 0;
         }
 
     }
@@ -94,18 +135,49 @@ public class Main extends PApplet {
 
     public void keyPressed() { // metodo que detecta digitação
         String text = "";
+        switch (indexCaixa){
+            case 1:
+                text = frTxt.text;
+                break;
+            case 2:
+                text = flTxt.text;
+                break;
+            case 3:
+                text = rlTxt.text;
+                break;
+            case 4:
+                text = rrTxt.text;
+                break;
+            default:
+                text = "";
+                break;
+        }
         if (key == BACKSPACE) {
-            if (frTxt.text.length() > 0) {
+            if (text.length() > 0) {
                 //aqui uma forma desnecessariamente complicada de apagar o ultimo caracter escrito
-                String[] palavraFatiada = frTxt.text.split(""); // divide a String em letras
+                String[] palavraFatiada = text.split(""); // divide a String em letras
                 String palavraRemontada = "";
                 for(int i = 0; i < palavraFatiada.length-1; i++){ // ignora a ultima letra assim a deletando da frase
                     palavraRemontada = palavraRemontada + palavraFatiada[i];
                 }
-                frTxt.text = palavraRemontada;
+                text = palavraRemontada;
             }
         }else if (key != ESC) {
-            frTxt.text = frTxt.text + key;
+            text = text + key;
+        }
+        switch (indexCaixa){
+            case 1:
+                frTxt.text = text;
+                break;
+            case 2:
+                 flTxt.text = text;
+                break;
+            case 3:
+                rlTxt.text = text;
+                break;
+            case 4:
+                rrTxt.text = text;
+                break;
         }
     }
 

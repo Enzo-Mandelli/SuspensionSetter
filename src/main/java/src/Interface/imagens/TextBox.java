@@ -35,7 +35,7 @@ public class TextBox extends PApplet {
         parent.rect(x, y, largura, altura, altura / 10);
         parent.fill(textColor);
         parent.textSize(tamanhoTexto);// Use PApplet.constante
-        parent.text(text, x, y);
+        parent.text(text, x-offsetX, y+(altura/2)+3);
         parent.text(texto, x+(offsetX), y+(offset));
     }
 }

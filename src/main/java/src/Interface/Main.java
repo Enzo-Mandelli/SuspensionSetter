@@ -2,7 +2,6 @@
 package src.Interface;
 import processing.core.PApplet;
 import processing.core.PImage;
-import src.Interface.imagens.TextBox;
 
 public class Main extends PApplet {
     int largura = 1200;
@@ -13,6 +12,8 @@ public class Main extends PApplet {
     int pyTextBox[] = {206-20, 393};
     int larguraTxt = 40;
     int alturaTxt = 20;
+    int posXEncoder = 516;
+    int posYEncoder = 350;
     byte indexCaixa = 0;
     PImage imgCentral;
     PImage defaultImage;
@@ -27,10 +28,25 @@ public class Main extends PApplet {
         PApplet.main("src.Interface.Main");
     }
 
-    TextBox frTxt;
-    TextBox flTxt;
-    TextBox rrTxt;
-    TextBox rlTxt;
+    TextBox frTxt;//1
+    TextBox flTxt;//2
+    TextBox rrTxt;//3
+    TextBox rlTxt;//4
+    public TextBox encoderL;
+    public TextBox encoderR;
+    public String acelerometro;
+    public TextBox alturaFR;
+    public TextBox alturaFL;
+    public TextBox alturaRR;
+    public TextBox alturaRL;
+    public String alturaFMeio;
+    public String alturaRMeio;
+    public String sensorDistFL;
+    public String sensorDistFr;
+    public String sensorDistRL;
+    public String sensorDistRR;
+    int[] corSist = {0,255,0};
+    String sistemaOn = "Sistema ON";
 
     @Override
     public void settings() {
@@ -39,8 +55,17 @@ public class Main extends PApplet {
         flTxt = new TextBox(this,larguraTxt, alturaTxt, pXTextBox[0], pyTextBox[1], 16, "angulo");
         rrTxt = new TextBox(this,larguraTxt, alturaTxt, pXTextBox[1], pyTextBox[0], 16, "angulo");
         rlTxt = new TextBox(this,larguraTxt, alturaTxt, pXTextBox[1], pyTextBox[1], 16, "angulo");
+        encoderL = new TextBox(this,larguraTxt, alturaTxt, posXEncoder, posYEncoder, 16, "encoder");
+        encoderR = new TextBox(this,larguraTxt, alturaTxt, posXEncoder, posYEncoder-120, 16, "encoder");
+        alturaFR = new TextBox(this,larguraTxt, alturaTxt, 320, posYEncoder-120, 16, " Altura");
+        alturaFL = new TextBox(this,larguraTxt, alturaTxt, 320, posYEncoder, 16, " Altura");
+        alturaRR = new TextBox(this,larguraTxt, alturaTxt, 820, posYEncoder-120, 16, " Altura");
+        alturaRL = new TextBox(this,larguraTxt, alturaTxt, 820, posYEncoder, 16, " Altura");
         flTxt.offset = (flTxt.offset*-1)+alturaTxt+10;
         rlTxt.offset = (rlTxt.offset*-1)+alturaTxt+10;
+        encoderR.offset = (encoderR.offset*-1) + alturaTxt + 10;
+        alturaFL.offset = (alturaFL.offset*-1) + alturaTxt+10;
+        alturaRL.offset = (alturaRL.offset*-1) + alturaTxt+10;
     }
 
 
@@ -60,12 +85,45 @@ public class Main extends PApplet {
         background(50,50,50);
         debug();
         image(imgCentral, ((largura/2)- (larguraImagem/2)), ((altura/2)-(alturaImagem/2)));
+        display();
+        if(!mouseOver()) gerenciadorImagens(indexCaixa);
+        fill(corSist[0],corSist[1],corSist[2]);
+        textSize(50);
+        text(sistemaOn, (largura/2)-100,80);
+        fill(50,50,50);
+        stroke(0);
+        rect(960, 0, largura, altura);
+        rect(960, 40, largura, altura);
+        textSize(30);
+        fill(255);
+        text("Dados adicionais", 965, 35);
+
+
+    }
+    public void onOff(boolean on){
+        if (on) {
+            corSist[0] = 0;
+            corSist[1] = 255;
+            corSist[2] = 0;
+            sistemaOn = "Sistema ON";
+        }else{
+            corSist[0] = 255;
+            corSist[1] = 0;
+            corSist[2] = 0;
+            sistemaOn = "Sistema OFF";
+        }
+    }
+    void display(){
         frTxt.display();
         flTxt.display();
         rrTxt.display();
         rlTxt.display();
-        if(!mouseOver()) gerenciadorImagens(indexCaixa);
-
+        encoderL.display();
+        encoderR.display();
+        alturaFR.display();
+        alturaRR.display();
+        alturaFL.display();
+        alturaRL.display();
     }
 
     boolean mouseOver(){
@@ -164,6 +222,9 @@ public class Main extends PApplet {
             }
         }else if (key != ESC) {
             text = text + key;
+        }else if(key == ESC){
+            indexCaixa = 0;
+            gerenciadorImagens(indexCaixa);
         }
         switch (indexCaixa){
             case 1:
@@ -178,6 +239,7 @@ public class Main extends PApplet {
             case 4:
                 rrTxt.text = text;
                 break;
+
         }
     }
 

@@ -1,6 +1,6 @@
-package src.Interface.imagens;
+package src.Interface;
 import processing.core.PApplet;
-public class TextBox extends PApplet {
+public class TextBox extends PApplet  {
     public String text = "";
     String texto = "";
     boolean mouseOver = false;

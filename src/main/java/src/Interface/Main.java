@@ -34,17 +34,17 @@ public class Main extends PApplet {
     TextBox rlTxt;//4
     public TextBox encoderL;
     public TextBox encoderR;
-    public String acelerometro;
+    public String acelerometro = "";
     public TextBox alturaFR;
     public TextBox alturaFL;
     public TextBox alturaRR;
     public TextBox alturaRL;
-    public String alturaFMeio;
-    public String alturaRMeio;
-    public String sensorDistFL;
-    public String sensorDistFr;
-    public String sensorDistRL;
-    public String sensorDistRR;
+    public String alturaFMeio = "";
+    public String alturaRMeio = "";
+    public String sensorDistFL = "";
+    public String sensorDistFr = "";
+    public String sensorDistRL = "";
+    public String sensorDistRR = "";
     int[] corSist = {0,255,0};
     String sistemaOn = "Sistema ON";
 
@@ -83,7 +83,6 @@ public class Main extends PApplet {
     @Override
     public void draw() {
         background(50,50,50);
-        debug();
         image(imgCentral, ((largura/2)- (larguraImagem/2)), ((altura/2)-(alturaImagem/2)));
         display();
         if(!mouseOver()) gerenciadorImagens(indexCaixa);
@@ -97,6 +96,15 @@ public class Main extends PApplet {
         textSize(30);
         fill(255);
         text("Dados adicionais", 965, 35);
+        textSize(16);
+        text("altura media frente: " + alturaFMeio, 965, 55);
+        text("altura media atras: " + alturaRMeio, 965, 85);
+        text("Acelerometro " + acelerometro, 965, 110);
+        text("sensor distancia fr: " + sensorDistFr + "mm", 965, 135);
+        text("sensor distancia rr: " + sensorDistRR + "mm", 965, 160);
+        text("sensor distancia fl: " + sensorDistFL + "mm", 965, 185);
+        text("sensor distancia rl: " + sensorDistRL + "mm", 965, 210);
+
 
 
     }

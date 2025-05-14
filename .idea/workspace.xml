@@ -5,6 +5,7 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="d7f13e2e-24a7-4417-8ac4-0ebfaa153bcb" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/src/main/java/src/server/ServerCreate.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/src/Interface/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/src/Interface/Main.java" afterDir="false" />
     </list>
@@ -16,8 +17,8 @@
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
-        <option value="Class" />
         <option value="Interface" />
+        <option value="Class" />
       </list>
     </option>
   </component>
@@ -65,6 +66,7 @@
 }</component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Users\Mandelli\Desktop\SuspensionWatcher\SuspensionSetter\src\main\java\src" />
       <recent name="C:\Users\Mandelli\Desktop\SuspensionWatcher\SuspensionSetter\src\main\java\src\Interface\imagens" />
       <recent name="C:\Users\Mandelli\Desktop\SuspensionWatcher\SuspensionSetter\src\main\java\org\example\imagesProject" />
       <recent name="C:\Users\Mandelli\Desktop\SuspensionWatcher\SuspensionSetter\src\main\java\org\example" />

@@ -2,6 +2,7 @@
 package src.Interface;
 import processing.core.PApplet;
 import processing.core.PImage;
+import src.server.ServerCreate;
 
 public class Main extends PApplet {
     int largura = 1200;
@@ -22,10 +23,13 @@ public class Main extends PApplet {
     PImage rl;
     PImage rr;
     String debuga = "x: " + mouseX + " y: " + mouseY;
+    public static ServerCreate servidor = new ServerCreate();
+    public static Thread thread = new Thread(servidor);
 
 
     public static void main(String[] args) {
         PApplet.main("src.Interface.Main");
+        thread.run();
     }
 
     TextBox frTxt;//1

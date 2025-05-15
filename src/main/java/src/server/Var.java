@@ -9,4 +9,5 @@ public class Var {
     public static int serverPort = 12345;
     public static List<Thread> clientes = new ArrayList<>();
     public static List<String> dados = new ArrayList<>();
+    public static boolean clienteConectado;
 }

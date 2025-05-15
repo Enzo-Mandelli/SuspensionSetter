@@ -20,6 +20,7 @@ public class ServerCreate implements Runnable {
                 // Criar uma thread para lidar com cada cliente
                 Var.clientes.add(new Thread(new ClientHandler(clientSocket)));
                 Var.clientes.getLast().start();
+                Var.clienteConectado = true;
             }
         } catch (IOException e) {
             e.printStackTrace();

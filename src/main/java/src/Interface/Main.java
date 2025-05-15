@@ -8,16 +8,16 @@ import src.server.Var;
 
 public class Main extends PApplet {
 
-    int largura = 1200;
+    int largura = 960;
     byte posEsp32 = Var.posEsp32; //o index na arraylist do esp32 desejado
     int altura = 600;
     int alturaImagem = 158;
     int larguraImagem = 432;
-    int pXTextBox[] = {462, 740};
-    int pyTextBox[] = {206-20, 393};
+    int pXTextBox[] = {462-240, 740-240};
+    int pyTextBox[] = {194, 384};
     int larguraTxt = 40;
     int alturaTxt = 20;
-    int posXEncoder = 516;
+    int posXEncoder = 516-240;
     int posYEncoder = 350;
     byte indexCaixa = 0;
     PImage imgCentral;
@@ -27,7 +27,10 @@ public class Main extends PApplet {
     PImage rl;
     PImage rr;
     String debuga = "x: " + mouseX + " y: " + mouseY;
+    int[] backgroundColor = {0,0,0};
+    int[] textColor = {255,255,255};
     public static ServerCreate servidor = new ServerCreate();
+    TelaInicializando unecessaryLoading = new TelaInicializando(this, backgroundColor, textColor, altura,largura);
     public static Thread thread = new Thread(servidor);
 
 
@@ -66,10 +69,10 @@ public class Main extends PApplet {
         rlTxt = new TextBox(this,larguraTxt, alturaTxt, pXTextBox[1], pyTextBox[1], 16, "angulo");
         encoderL = new TextBox(this,larguraTxt, alturaTxt, posXEncoder, posYEncoder, 16, "encoder");
         encoderR = new TextBox(this,larguraTxt, alturaTxt, posXEncoder, posYEncoder-120, 16, "encoder");
-        alturaFR = new TextBox(this,larguraTxt, alturaTxt, 320, posYEncoder-120, 16, " Altura");
-        alturaFL = new TextBox(this,larguraTxt, alturaTxt, 320, posYEncoder, 16, " Altura");
-        alturaRR = new TextBox(this,larguraTxt, alturaTxt, 820, posYEncoder-120, 16, " Altura");
-        alturaRL = new TextBox(this,larguraTxt, alturaTxt, 820, posYEncoder, 16, " Altura");
+        alturaFR = new TextBox(this,larguraTxt, alturaTxt, 320-240, posYEncoder-120, 16, "Altura");
+        alturaFL = new TextBox(this,larguraTxt, alturaTxt, 320-240, posYEncoder, 16, "Altura");
+        alturaRR = new TextBox(this,larguraTxt, alturaTxt, 820-240, posYEncoder-120, 16, "Altura");
+        alturaRL = new TextBox(this,larguraTxt, alturaTxt, 820-240, posYEncoder, 16, "Altura");
         flTxt.offset = (flTxt.offset*-1)+alturaTxt+10;
         rlTxt.offset = (rlTxt.offset*-1)+alturaTxt+10;
         encoderR.offset = (encoderR.offset*-1) + alturaTxt + 10;
@@ -91,32 +94,36 @@ public class Main extends PApplet {
 
     @Override
     public void draw() {
-        updateDados();
-        background(50,50,50);
-        image(imgCentral, ((largura/2)- (larguraImagem/2)), ((altura/2)-(alturaImagem/2)));
-        display();
-        if(!mouseOver()) gerenciadorImagens(indexCaixa);
-        fill(corSist[0],corSist[1],corSist[2]);
-        textSize(50);
-        text(sistemaOn, (largura/2)-100,80);
-        fill(50,50,50);
-        stroke(0);
-        rect(960, 0, largura, altura);
-        rect(960, 40, largura, altura);
-        textSize(30);
-        fill(255);
-        textFont(fonte);
-        text("Dados adicionais", 965, 35);
-        textSize(16);
-        text("altura media frente: " + alturaFMeio, 965, 55);
-        text("altura media atras: " + alturaRMeio, 965, 85);
-        text("Acelerometro " + acelerometro, 965, 110);
-        text("sensor distancia fr: " + sensorDistFr + "mm", 965, 135);
-        text("sensor distancia rr: " + sensorDistRR + "mm", 965, 160);
-        text("sensor distancia fl: " + sensorDistFL + "mm", 965, 185);
-        text("sensor distancia rl: " + sensorDistRL + "mm", 965, 210);
+        if(!unecessaryLoading.concluido){
+            unecessaryLoading.display();
+        }else {
+            updateDados();
+            textFont(fonte);
+            background(0, 0, 0);
+            background(0, 0, 0);
+            image(imgCentral, (((largura - 240) / 2) - (larguraImagem / 2)), ((altura / 2) - (alturaImagem / 2)));
+            display();
+            if (!mouseOver()) gerenciadorImagens(indexCaixa);
+            fill(corSist[0], corSist[1], corSist[2]);
+            textSize(50);
+            text(sistemaOn, (largura / 2) - 400, 80);
+            fill(0, 0, 0);
+            stroke(255);
+            rect(960 - 240, 0, largura, altura);
+            rect(960 - 240, 40, largura, altura);
+            textSize(20);
+            fill(255);
+            text("Dados adicionais", 965 - 240, 35);
+            textSize(16);
+            text("altura media frente: " + alturaFMeio, 965 - 240, 65);
+            text("altura media atras: " + alturaRMeio, 965 - 240, 95);
+            text("Acelerometro: " + acelerometro, 965 - 240, 120);
+            text("sensor distancia fr: " + sensorDistFr + "mm", 965 - 240, 145);
+            text("sensor distancia rr: " + sensorDistRR + "mm", 965 - 240, 170);
+            text("sensor distancia fl: " + sensorDistFL + "mm", 965 - 240, 195);
+            text("sensor distancia rl: " + sensorDistRL + "mm", 965 - 240, 220);
 
-
+        }
 
     }
     public void onOff(boolean on){
@@ -132,6 +139,7 @@ public class Main extends PApplet {
             sistemaOn = "Sistema OFF";
         }
     }
+
     void updateDados(){
         if(Var.dados.size() > 0) {
             String[] itens = Var.dados.get(posEsp32).split(",");

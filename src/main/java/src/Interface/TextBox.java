@@ -7,7 +7,7 @@ public class TextBox extends PApplet  {
 
     String texto = "";
     boolean mouseOver = false;
-    int textColor = 0;
+    int textColor = 255;
     int x;
     int y;
     int largura;
@@ -33,8 +33,8 @@ public class TextBox extends PApplet  {
 
 
     public void display() { // Renomeado para deixar claro que desenha
-        parent.stroke(255, 246, 50);
-        parent.fill(255);
+        parent.stroke(255);
+        parent.fill(0);
         parent.rect(x, y, largura, altura, altura / 10);
         parent.fill(textColor);
         parent.textSize(tamanhoTexto);// Use PApplet.constante

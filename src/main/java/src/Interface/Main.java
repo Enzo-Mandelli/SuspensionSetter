@@ -1,11 +1,15 @@
 
 package src.Interface;
 import processing.core.PApplet;
+import processing.core.PFont;
 import processing.core.PImage;
 import src.server.ServerCreate;
+import src.server.Var;
 
 public class Main extends PApplet {
+
     int largura = 1200;
+    byte posEsp32 = Var.posEsp32; //o index na arraylist do esp32 desejado
     int altura = 600;
     int alturaImagem = 158;
     int larguraImagem = 432;
@@ -36,6 +40,7 @@ public class Main extends PApplet {
     TextBox flTxt;//2
     TextBox rrTxt;//3
     TextBox rlTxt;//4
+    public PFont fonte;
     public TextBox encoderL;
     public TextBox encoderR;
     public String acelerometro = "";
@@ -76,16 +81,17 @@ public class Main extends PApplet {
 
     @Override
     public void setup() {
-        rr = loadImage("src/main/java/src/Interface/imagens/RL.png");
-        fr = loadImage("src/main/java/src/Interface/imagens/FL.png");
-        fl = loadImage("src/main/java/src/Interface/imagens/FR.png");
-        rl = loadImage("src/main/java/src/Interface/imagens/RR.png");
-        imgCentral = defaultImage = loadImage("src/main/java/src/Interface/imagens/default.png");
-
+        rr = loadImage("src/main/java/src/Interface/resources/RL.png");
+        fr = loadImage("src/main/java/src/Interface/resources/FL.png");
+        fl = loadImage("src/main/java/src/Interface/resources/FR.png");
+        rl = loadImage("src/main/java/src/Interface/resources/RR.png");
+        imgCentral = defaultImage = loadImage("src/main/java/src/Interface/resources/default.png");
+        fonte = createFont("src/main/java/src/Interface/resources/fonteUltrakill.ttf", 16);
     }
 
     @Override
     public void draw() {
+        updateDados();
         background(50,50,50);
         image(imgCentral, ((largura/2)- (larguraImagem/2)), ((altura/2)-(alturaImagem/2)));
         display();
@@ -99,6 +105,7 @@ public class Main extends PApplet {
         rect(960, 40, largura, altura);
         textSize(30);
         fill(255);
+        textFont(fonte);
         text("Dados adicionais", 965, 35);
         textSize(16);
         text("altura media frente: " + alturaFMeio, 965, 55);
@@ -125,6 +132,61 @@ public class Main extends PApplet {
             sistemaOn = "Sistema OFF";
         }
     }
+    void updateDados(){
+        if(Var.dados.size() > 0) {
+            String[] itens = Var.dados.get(posEsp32).split(",");
+            encoderL.text = itens[0];
+            encoderR.text = itens[1];
+            acelerometro = itens[7];
+            alturaFR.text = itens[2];
+            alturaFL.text = itens[3];
+            alturaRR.text = itens[4];
+            alturaRL.text = itens[5];
+            String sensorDistFL = itens[8];
+            String sensorDistFr = itens[9];
+            String sensorDistRL = itens[10];
+            String sensorDistRR = itens[11];
+
+            try {
+                alturaFMeio = String.valueOf((Integer.valueOf(itens[2]) + Integer.valueOf(itens[3]) / 2));
+                alturaRMeio = String.valueOf((Integer.valueOf(itens[4]) + Integer.valueOf(itens[5]) / 2));
+            } catch (Exception e) {
+                alturaFMeio = "NaN";
+                alturaRMeio = "NaN";
+            }
+        }
+
+
+        //Ordem texto
+        /*
+        0 EncoderR
+        1 EncoderL
+        2 AlturaFR
+        3 AlturaFL
+        4 AlturaRR
+        5 AlturaRL
+        6 Acelerometro
+        8 distFL
+        9 distFR
+        10 distRl
+        11 distRR
+         */
+
+    }
+
+    public boolean checaEnviaDados(){
+        boolean valido = true;
+        try{
+            int aux = Integer.valueOf(alturaFR.text);
+            aux = Integer.valueOf(alturaFL.text);
+            aux = Integer.valueOf(alturaRR.text );
+            aux = Integer.valueOf(alturaRL.text);
+        } catch (Exception e) {
+            valido = false;
+        }
+        return valido;
+    }
+
     void display(){
         frTxt.display();
         flTxt.display();

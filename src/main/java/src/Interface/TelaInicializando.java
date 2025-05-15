@@ -17,6 +17,7 @@ public class TelaInicializando {
     public boolean concluido = false;
     boolean check1 = false;
     boolean check2 = false;
+    boolean conectado = false;
     String falseCpuCheck = "CPU check";
     String falseGpuCheck = "GPU check";
     byte contPontos1 = 0;
@@ -38,7 +39,6 @@ public class TelaInicializando {
     }
 
     void printaPontosCPU(){
-        parent.delay(1000);
         parent.text(falseCpuCheck, x, textSize * 7 + 20);
         falseCpuCheck = falseCpuCheck + ".";
         contPontos1++;
@@ -46,7 +46,8 @@ public class TelaInicializando {
     }
 
     void printaPontosGPU(){
-        parent.text(falseGpuCheck, x, textSize * 7 + 20);
+        parent.text(falseCpuCheck, x, textSize * 7 + 20);
+        parent.text(falseGpuCheck, x, textSize * 10 + 20);
         falseGpuCheck = falseGpuCheck + ".";
         contPontos2++;
         if(contPontos2 >= 3)check2 = true;
@@ -73,11 +74,12 @@ public class TelaInicializando {
         }
 
         if(Var.clienteConectado){
+            conectado = true;
             parent.fill(0,255,0);
             parent.text("Sucesso!", x, textSize*6);
             parent.fill(255, 0, 0);
-            parent.delay(1000);
-            concluido = true;
+            parent.delay(500);
+            if(check1&&check2)concluido = true;
         }
     }
 

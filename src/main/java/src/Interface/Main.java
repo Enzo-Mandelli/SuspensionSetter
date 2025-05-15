@@ -94,11 +94,14 @@ public class Main extends PApplet {
 
     @Override
     public void draw() {
+        textFont(fonte);
         if(!unecessaryLoading.concluido){
             unecessaryLoading.display();
+            if(!unecessaryLoading.check1 && unecessaryLoading.conectado)unecessaryLoading.printaPontosCPU();
+            if(unecessaryLoading.check1)unecessaryLoading.printaPontosGPU();
         }else {
             updateDados();
-            textFont(fonte);
+
             background(0, 0, 0);
             background(0, 0, 0);
             image(imgCentral, (((largura - 240) / 2) - (larguraImagem / 2)), ((altura / 2) - (alturaImagem / 2)));

@@ -5,12 +5,9 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="d7f13e2e-24a7-4417-8ac4-0ebfaa153bcb" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/src/main/java/src/Interface/TelaInicializando.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/src/Interface/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/src/Interface/Main.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/src/Interface/TextBox.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/src/Interface/TextBox.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/src/server/ServerCreate.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/src/server/ServerCreate.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/src/server/Var.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/src/server/Var.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/src/Interface/TelaInicializando.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/src/Interface/TelaInicializando.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />

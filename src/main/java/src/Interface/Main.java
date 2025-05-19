@@ -13,12 +13,13 @@ public class Main extends PApplet {
     int altura = 600;
     int alturaImagem = 158;
     int larguraImagem = 432;
-    int pXTextBox[] = {462-240, 740-240};
-    int pyTextBox[] = {194, 384};
+    int[] pXTextBox = {462-240, 740-240};
+    int[] pyTextBox = {194, 384};
     int larguraTxt = 40;
     int alturaTxt = 20;
     int posXEncoder = 516-240;
     int posYEncoder = 350;
+    int posXaltura[] = {320, 820};
     byte indexCaixa = 0;
     PImage imgCentral;
     PImage defaultImage;
@@ -69,10 +70,10 @@ public class Main extends PApplet {
         rlTxt = new TextBox(this,larguraTxt, alturaTxt, pXTextBox[1], pyTextBox[1], 16, "angulo");
         encoderL = new TextBox(this,larguraTxt, alturaTxt, posXEncoder, posYEncoder, 16, "encoder");
         encoderR = new TextBox(this,larguraTxt, alturaTxt, posXEncoder, posYEncoder-120, 16, "encoder");
-        alturaFR = new TextBox(this,larguraTxt, alturaTxt, 320-240, posYEncoder-120, 16, "Altura");
-        alturaFL = new TextBox(this,larguraTxt, alturaTxt, 320-240, posYEncoder, 16, "Altura");
-        alturaRR = new TextBox(this,larguraTxt, alturaTxt, 820-240, posYEncoder-120, 16, "Altura");
-        alturaRL = new TextBox(this,larguraTxt, alturaTxt, 820-240, posYEncoder, 16, "Altura");
+        alturaFR = new TextBox(this,larguraTxt, alturaTxt, posXaltura[0]-240, posYEncoder-120, 16, "Altura");
+        alturaFL = new TextBox(this,larguraTxt, alturaTxt, posXaltura[0]-240, posYEncoder, 16, "Altura");
+        alturaRR = new TextBox(this,larguraTxt, alturaTxt, posXaltura[1]-240, posYEncoder-120, 16, "Altura");
+        alturaRL = new TextBox(this,larguraTxt, alturaTxt, posXaltura[1]-240, posYEncoder, 16, "Altura");
         flTxt.offset = (flTxt.offset*-1)+alturaTxt+10;
         rlTxt.offset = (rlTxt.offset*-1)+alturaTxt+10;
         encoderR.offset = (encoderR.offset*-1) + alturaTxt + 10;
@@ -153,10 +154,10 @@ public class Main extends PApplet {
             alturaFL.text = itens[3];
             alturaRR.text = itens[4];
             alturaRL.text = itens[5];
-            String sensorDistFL = itens[8];
-            String sensorDistFr = itens[9];
-            String sensorDistRL = itens[10];
-            String sensorDistRR = itens[11];
+            sensorDistFL = itens[8];
+            sensorDistFr = itens[9];
+            sensorDistRL = itens[10];
+            sensorDistRR = itens[11];
 
             try {
                 alturaFMeio = String.valueOf((Integer.valueOf(itens[2]) + Integer.valueOf(itens[3]) / 2));

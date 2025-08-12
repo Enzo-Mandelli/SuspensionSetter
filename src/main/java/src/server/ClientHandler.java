@@ -3,6 +3,7 @@ package src.server;
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
+import java.io.PrintWriter;
 import java.net.Socket;
 import java.util.ArrayList;
 import java.util.List;
@@ -10,7 +11,8 @@ import java.util.List;
 public class ClientHandler implements Runnable {
     public String inputLine = "";
     private Socket clientSocket;
-    private BufferedReader in;
+    private BufferedReader in; //classe para ler dados
+    private PrintWriter out; // classe para enviar dados
     public void itens(){
         Var.dados.add(inputLine);
     }
@@ -20,6 +22,7 @@ public class ClientHandler implements Runnable {
         this.clientSocket = socket;
         try {
             this.in = new BufferedReader(new InputStreamReader(clientSocket.getInputStream()));
+            this.out = new PrintWriter(clientSocket.getOutputStream(), true);
         } catch (IOException e) {
             e.printStackTrace();
         }
@@ -49,6 +52,11 @@ public class ClientHandler implements Runnable {
             clientSocket.close();
         } catch (IOException e) {
             e.printStackTrace();
+        }
+    }
+    void sendData(String data){
+        if(out != null){
+            out.println();
         }
     }
 }

@@ -8,6 +8,8 @@
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/src/Interface/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/src/Interface/Main.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/src/server/ClientHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/src/server/ClientHandler.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/src/server/ServerCreate.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/src/server/ServerCreate.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/src/server/Var.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/src/server/Var.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -148,7 +150,13 @@
       <map>
         <entry key="MAIN">
           <value>
-            <State />
+            <State>
+              <option name="CUSTOM_BOOLEAN_PROPERTIES">
+                <map>
+                  <entry key="Show.Git.Branches" value="true" />
+                </map>
+              </option>
+            </State>
           </value>
         </entry>
       </map>

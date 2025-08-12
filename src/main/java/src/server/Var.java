@@ -1,5 +1,7 @@
 package src.server;
 
+import java.io.BufferedReader;
+import java.io.PrintWriter;
 import java.net.ServerSocket;
 import java.util.ArrayList;
 import java.util.List;
@@ -10,4 +12,7 @@ public class Var {
     public static List<Thread> clientes = new ArrayList<>();
     public static List<String> dados = new ArrayList<>();
     public static boolean clienteConectado;
+    public static BufferedReader in; //classe para ler dados
+    public static PrintWriter out;
+    public static String message;
 }

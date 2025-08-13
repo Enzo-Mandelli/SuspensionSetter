@@ -21,12 +21,14 @@ public class Main extends PApplet {
     int posYEncoder = 350;
     int posXaltura[] = {320, 820};
     byte indexCaixa = 0;
+    int colorEnviar = 0;
     PImage imgCentral;
     PImage defaultImage;
     PImage fr;
     PImage fl;
     PImage rl;
     PImage rr;
+    PImage logo;
     String debuga = "x: " + mouseX + " y: " + mouseY;
     int[] backgroundColor = {0,0,0};
     int[] textColor = {255,255,255};
@@ -91,12 +93,13 @@ public class Main extends PApplet {
         rl = loadImage("src/main/java/src/Interface/resources/RR.png");
         imgCentral = defaultImage = loadImage("src/main/java/src/Interface/resources/default.png");
         fonte = createFont("src/main/java/src/Interface/resources/fonteUltrakill.ttf", 16);
+        logo = loadImage("src/main/java/src/Interface/resources/logo.jpg");
     }
 
     @Override
     public void draw() {
         textFont(fonte);
-        if(!unecessaryLoading.concluido){
+        if(unecessaryLoading.concluido){
             unecessaryLoading.display();
             if(!unecessaryLoading.check1 && unecessaryLoading.conectado)unecessaryLoading.printaPontosCPU();
             if(unecessaryLoading.check1)unecessaryLoading.printaPontosGPU();
@@ -126,7 +129,12 @@ public class Main extends PApplet {
             text("sensor distancia rr: " + sensorDistRR + "mm", 965 - 240, 170);
             text("sensor distancia fl: " + sensorDistFL + "mm", 965 - 240, 195);
             text("sensor distancia rl: " + sensorDistRL + "mm", 965 - 240, 220);
-
+            fill(colorEnviar);
+            rect(largura - 200, altura - 80, 160, 40 );
+            fill(255- colorEnviar);
+            text("Enviar", largura - 150, altura - 55);
+            colorEnviar = 0;
+            image(logo, 10, altura-100);
         }
 
     }
@@ -143,6 +151,7 @@ public class Main extends PApplet {
             sistemaOn = "Sistema OFF";
         }
     }
+
 
     void updateDados(){
         if(Var.dados.size() > 0) {
@@ -263,6 +272,11 @@ public class Main extends PApplet {
             indexCaixa = 4;
         }else{
             indexCaixa = 0;
+        }
+        if( altura-40 > mouseY && mouseY > altura- 80 ){
+            if(mouseX > largura-200 && mouseX < largura - 40){
+                colorEnviar = 255;
+            }
         }
 
     }

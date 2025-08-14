@@ -36,8 +36,6 @@ public class ClientHandler implements Runnable {
                 String[] sensorValues = inputLine.split(",");
                 if (sensorValues.length == 2) {
                     try {
-                        readData();
-                        sendData();
                     } catch (NumberFormatException e) {
                         System.err.println("Erro ao converter valores: " + inputLine);
                     }
@@ -49,22 +47,6 @@ public class ClientHandler implements Runnable {
         } catch (IOException e) {
             e.printStackTrace();
         }
-    }
-    public void sendData(){
-        if(Var.out != null){
-            Var.out.println(Var.message);
-            Var.message = null;
-        }
-    }
-    public String readData(){
-        String data = "";
-        try {
-            inputLine = Var.in.readLine();
-            data =  (data + inputLine);
-        } catch (IOException e) {
-            System.out.println("n deu pra ler");
-        }
-        return data;
     }
 }
 

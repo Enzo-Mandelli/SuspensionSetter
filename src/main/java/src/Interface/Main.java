@@ -3,8 +3,11 @@ package src.Interface;
 import processing.core.PApplet;
 import processing.core.PFont;
 import processing.core.PImage;
+import src.dataHandler.ComunicacaoDados;
 import src.server.ServerCreate;
 import src.server.Var;
+
+import java.io.IOException;
 
 public class Main extends PApplet {
 
@@ -99,7 +102,7 @@ public class Main extends PApplet {
     @Override
     public void draw() {
         textFont(fonte);
-        if(unecessaryLoading.concluido){
+        if(!unecessaryLoading.concluido){
             unecessaryLoading.display();
             if(!unecessaryLoading.check1 && unecessaryLoading.conectado)unecessaryLoading.printaPontosCPU();
             if(unecessaryLoading.check1)unecessaryLoading.printaPontosGPU();
@@ -135,6 +138,7 @@ public class Main extends PApplet {
             text("Enviar", largura - 150, altura - 55);
             colorEnviar = 0;
             image(logo, 10, altura-100);
+
         }
 
     }
@@ -195,17 +199,23 @@ public class Main extends PApplet {
 
     }
 
-    public boolean checaEnviaDados(){
-        boolean valido = true;
+    public void preparaArgumentoEnvio(){
         try{
-            int aux = Integer.valueOf(alturaFR.text);
-            aux = Integer.valueOf(alturaFL.text);
-            aux = Integer.valueOf(alturaRR.text );
-            aux = Integer.valueOf(alturaRL.text);
+            String[] argumento = new String[5];
+            argumento[0] = frTxt.text + ",";
+            argumento[1] = flTxt.text + ",";
+            argumento[2] = rrTxt.text + ",";
+            argumento[3] = rlTxt.text + ",";
+            argumento[4] = ";";
+            for(int i = 0; i < argumento.length; i++){
+                if(argumento[i].equals("")){
+                    argumento[i] = "v,";
+                }
+            }
+            ComunicacaoDados.enviaDados(argumento);
         } catch (Exception e) {
-            valido = false;
+            System.out.println(e);
         }
-        return valido;
     }
 
     void display(){
@@ -219,7 +229,7 @@ public class Main extends PApplet {
         alturaRR.display();
         alturaFL.display();
         alturaRL.display();
-    }
+    }//gerencia a exibição dos objetos em tela
 
     boolean mouseOver(){
         boolean estaSobCaixa = true;
@@ -238,7 +248,7 @@ public class Main extends PApplet {
         }
         gerenciadorImagens(indexCaixa);
         return estaSobCaixa;
-    }
+    }//retorna se o mouse está sobre determinados pontos
 
     void gerenciadorImagens(int indexCaixa){
         switch (indexCaixa){
@@ -257,7 +267,7 @@ public class Main extends PApplet {
             default:
                 imgCentral = defaultImage;
         }
-    }
+    }//altera a imagem a ser exibida
 
 
     @Override
@@ -276,6 +286,7 @@ public class Main extends PApplet {
         if( altura-40 > mouseY && mouseY > altura- 80 ){
             if(mouseX > largura-200 && mouseX < largura - 40){
                 colorEnviar = 255;
+                preparaArgumentoEnvio();
             }
         }
 
@@ -288,7 +299,7 @@ public class Main extends PApplet {
         text(debuga, largura/4, altura/4);
         line(0,mouseY,largura, mouseY);
         line(mouseX,0,mouseX, altura);
-    }
+    }// mostra a posição do mouse
 
 
     public void keyPressed() { // metodo que detecta digitação
@@ -341,6 +352,6 @@ public class Main extends PApplet {
                 break;
 
         }
-    }
+    }//detecta a tecla pressionada
 
 }

@@ -5,11 +5,11 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="d7f13e2e-24a7-4417-8ac4-0ebfaa153bcb" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/src/main/java/src/Interface/resources/logo.jpg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/src/Interface/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/src/Interface/Main.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/src/dataHandler/recebeDados.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/src/dataHandler/ComunicacaoDados.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/src/server/ClientHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/src/server/ClientHandler.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/src/server/Var.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/src/server/Var.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -56,7 +56,7 @@
     "Application.src.Interface.Main.executor": "Run",
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "SHARE_PROJECT_CONFIGURATION_FILES": "true",
-    "git-widget-placeholder": "Merging master",
+    "git-widget-placeholder": "master",
     "ignore.virus.scanning.warn.message": "true",
     "kotlin-language-version-configured": "true",
     "last_opened_file_path": "C:/Users/Mandelli/Desktop/SuspensionWatcher/SuspensionSetter/src/main/java/src/Interface/resources",

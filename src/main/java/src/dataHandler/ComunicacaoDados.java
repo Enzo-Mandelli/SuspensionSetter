@@ -4,8 +4,8 @@ import src.server.Var;
 
 import java.io.IOException;
 
-public class recebeDados {
-    public String[] recebe(){
+public class ComunicacaoDados {
+    public static String[] recebe(){
         String mensagem;
         String[] dadosSeparados;
         try {
@@ -17,5 +17,12 @@ public class recebeDados {
         }
         return dadosSeparados;
     }
-    public envia
+    public static void enviaDados(String[] mensagem){
+        String mensagemUnicaLinha = "";
+        for (String s : mensagem) {
+            mensagemUnicaLinha += s;
+        }
+        Var.out.println(mensagemUnicaLinha);
+    }
+
 }

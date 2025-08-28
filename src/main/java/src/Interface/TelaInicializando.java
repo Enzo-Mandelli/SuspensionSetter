@@ -1,8 +1,10 @@
 package src.Interface;
 
 import processing.core.PApplet;
+import processing.core.PImage;
 import src.server.Var;
 
+import java.awt.*;
 import java.net.InetAddress;
 import java.net.UnknownHostException;
 import java.util.Timer;
@@ -29,13 +31,14 @@ public class TelaInicializando {
     boolean setado = false;
     byte textSize = 30;
     int x = 10;
+    PImage logo;
     TelaInicializando(PApplet p, int[] backgroundColor, int[] textColor, int altura, int largura){
         this.parent = p;
         this.altura = altura;
         this.largura = largura;
         this. backgroundColor = backgroundColor;
         this.textColor = textColor;
-
+        logo = parent.loadImage("src/main/java/src/Interface/resources/logoError.jpg");
     }
 
     void printaPontosCPU(){
@@ -81,6 +84,14 @@ public class TelaInicializando {
             parent.delay(500);
             if(check1&&check2)concluido = true;
         }
+    }
+
+    void disconnect(){
+        parent.background(backgroundColor[0], backgroundColor[1], backgroundColor[2]);
+        parent.textSize(textSize);
+        parent.fill(255,0,0);
+        parent.text("houve uma casualidade envolvendo hospedeiro", x, 60);
+        parent.image(logo, (((largura - 240) / 2) - (132 / 2)), (altura / 2));
     }
 
     private String getIP(){

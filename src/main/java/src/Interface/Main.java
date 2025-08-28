@@ -104,37 +104,44 @@ public class Main extends PApplet {
             if(!unecessaryLoading.check1 && unecessaryLoading.conectado)unecessaryLoading.printaPontosCPU();
             if(unecessaryLoading.check1)unecessaryLoading.printaPontosGPU();
         }else {
-            updateDados();
-
-            background(0, 0, 0);
-            background(0, 0, 0);
-            image(imgCentral, (((largura - 240) / 2) - (larguraImagem / 2)), ((altura / 2) - (alturaImagem / 2)));
-            display();
-            if (!mouseOver()) gerenciadorImagens(indexCaixa);
-            fill(corSist[0], corSist[1], corSist[2]);
-            textSize(50);
-            text(sistemaOn, (largura / 2) - 400, 80);
-            fill(0, 0, 0);
-            stroke(255);
-            rect(960 - 240, 0, largura, altura);
-            rect(960 - 240, 40, largura, altura);
-            textSize(20);
-            fill(255);
-            text("Dados adicionais", 965 - 240, 35);
-            textSize(16);
-            text("altura media frente: " + alturaFMeio, 965 - 240, 65);
-            text("altura media atras: " + alturaRMeio, 965 - 240, 95);
-            text("Acelerometro: " + acelerometro, 965 - 240, 120);
-            text("sensor distancia fr: " + sensorDistFr + "mm", 965 - 240, 145);
-            text("sensor distancia rr: " + sensorDistRR + "mm", 965 - 240, 170);
-            text("sensor distancia fl: " + sensorDistFL + "mm", 965 - 240, 195);
-            text("sensor distancia rl: " + sensorDistRL + "mm", 965 - 240, 220);
-            fill(colorEnviar);
-            rect(largura - 200, altura - 80, 160, 40 );
-            fill(255- colorEnviar);
-            text("Enviar", largura - 150, altura - 55);
-            colorEnviar = 0;
-            image(logo, 10, altura-100);
+            if(Var.clienteConectado) {
+                updateDados();
+                background(0, 0, 0);
+                background(0, 0, 0);
+                image(imgCentral, (((largura - 240) / 2) - (larguraImagem / 2)), ((altura / 2) - (alturaImagem / 2)));
+                display();
+                if (!mouseOver()) gerenciadorImagens(indexCaixa);
+                fill(corSist[0], corSist[1], corSist[2]);
+                textSize(50);
+                text(sistemaOn, (largura / 2) - 400, 80);
+                fill(0, 0, 0);
+                stroke(255);
+                rect(960 - 240, 0, largura, altura);
+                rect(960 - 240, 40, largura, altura);
+                textSize(20);
+                fill(255);
+                text("Dados adicionais", 965 - 240, 35);
+                textSize(16);
+                text("altura media frente: " + alturaFMeio, 965 - 240, 65);
+                text("altura media atras: " + alturaRMeio, 965 - 240, 95);
+                text("Acelerometro: " + acelerometro, 965 - 240, 120);
+                text("sensor distancia fr: " + sensorDistFr + "mm", 965 - 240, 145);
+                text("sensor distancia rr: " + sensorDistRR + "mm", 965 - 240, 170);
+                text("sensor distancia fl: " + sensorDistFL + "mm", 965 - 240, 195);
+                text("sensor distancia rl: " + sensorDistRL + "mm", 965 - 240, 220);
+                fill(colorEnviar);
+                rect(largura - 200, altura - 80, 160, 40);
+                fill(255 - colorEnviar);
+                text("Enviar", largura - 150, altura - 55);
+                colorEnviar = 0;
+                image(logo, 10, altura - 100);
+            }else{
+                unecessaryLoading.disconnect();
+                delay(2000);
+                unecessaryLoading.concluido = false;
+                unecessaryLoading.check1 = false;
+                unecessaryLoading.check2 = false;
+            }
         }
 
     }

@@ -5,7 +5,11 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="d7f13e2e-24a7-4417-8ac4-0ebfaa153bcb" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/src/main/java/src/Interface/resources/logoError.jpg" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/src/Interface/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/src/Interface/Main.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/src/Interface/TelaInicializando.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/src/Interface/TelaInicializando.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/src/server/ClientHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/src/server/ClientHandler.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -22,6 +26,7 @@
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+    <option name="RESET_MODE" value="HARD" />
   </component>
   <component name="GitHubPullRequestSearchHistory">{
   &quot;lastFilter&quot;: {
@@ -68,6 +73,7 @@
       <recent name="C:\Users\20241ceca0190\Desktop\Alarmbot\Alarmbot\SuspensionSetter\src\main\java\src\Interface\resources" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Users\20241ceca0190\Desktop\Alarmbot\Alarmbot\SuspensionSetter\src\main\java\src\Interface\resources" />
       <recent name="C:\Users\Mandelli\Desktop\SuspensionWatcher\SuspensionSetter\src\main\java\src" />
       <recent name="C:\Users\Mandelli\Desktop\SuspensionWatcher\SuspensionSetter\src\main\java\src\Interface\imagens" />
       <recent name="C:\Users\Mandelli\Desktop\SuspensionWatcher\SuspensionSetter\src\main\java\org\example\imagesProject" />

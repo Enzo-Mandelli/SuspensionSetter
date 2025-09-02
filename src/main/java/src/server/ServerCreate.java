@@ -16,7 +16,6 @@ public class ServerCreate implements Runnable {
             while (true) {
                 Socket clientSocket = serverSocket.accept(); // Aguarda por uma conexão do cliente (ESP)
                 System.out.println("Cliente conectado: " + clientSocket.getInetAddress().getHostAddress());
-
                 // Criar uma thread para lidar com cada cliente
                 Var.clientes.add(new Thread(new ClientHandler(clientSocket)));
                 Var.clientes.getLast().start();

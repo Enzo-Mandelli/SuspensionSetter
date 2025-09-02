@@ -6,6 +6,7 @@ import processing.core.PImage;
 import src.dataHandler.ComunicacaoDados;
 import src.server.ServerCreate;
 import src.server.Var;
+import src.server.dataFilter;
 
 import java.io.IOException;
 
@@ -143,13 +144,15 @@ public class Main extends PApplet {
                 image(logo, 10, altura-100);
             }else{
                 unecessaryLoading.disconnect(logoError);
-                delay(2000);
+                delay(5000);
                 unecessaryLoading.concluido = false;
                 unecessaryLoading.check1 = false;
                 unecessaryLoading.check2 = false;
                 unecessaryLoading.cont = 0;
                 unecessaryLoading.contPontos1 = 0;
                 unecessaryLoading.contPontos2 = 0;
+                unecessaryLoading.falseCpuCheck = "";
+                unecessaryLoading.falseGpuCheck = "";
             }
 
         }
@@ -209,6 +212,27 @@ public class Main extends PApplet {
         10 distRl
         11 distRR
          */
+
+    }
+
+    public void updateText(){
+        dataFilter data = new dataFilter();
+        data.preencheArray();
+        data.setParametros();
+        if(dataFilter.encoderR){
+            encoderR.fill(0,255,0);
+        }else{
+            encoderR.fill(backgroundColor[0],backgroundColor[1],backgroundColor[2]);
+        }
+        if(dataFilter.encoderL){
+            encoderL.fill(0,255,0);
+        }else{
+            encoderL.fill(backgroundColor[0],backgroundColor[1],backgroundColor[2]);
+        }
+        sensorDistFr = dataFilter.alturaFR;
+        sensorDistFL = dataFilter.alturaFL;
+        sensorDistRR = dataFilter.alturaRR;
+        sensorDistRL = dataFilter.alturaRL;
 
     }
 
@@ -316,24 +340,13 @@ public class Main extends PApplet {
 
 
     public void keyPressed() { // metodo que detecta digitação
-        String text = "";
-        switch (indexCaixa){
-            case 1:
-                text = frTxt.text;
-                break;
-            case 2:
-                text = flTxt.text;
-                break;
-            case 3:
-                text = rlTxt.text;
-                break;
-            case 4:
-                text = rrTxt.text;
-                break;
-            default:
-                text = "";
-                break;
-        }
+        String text = switch (indexCaixa) {
+            case 1 -> frTxt.text;
+            case 2 -> flTxt.text;
+            case 3 -> rlTxt.text;
+            case 4 -> rrTxt.text;
+            default -> "";
+        };
         if (key == BACKSPACE) {
             if (text.length() > 0) {
                 //aqui uma forma desnecessariamente complicada de apagar o ultimo caracter escrito
